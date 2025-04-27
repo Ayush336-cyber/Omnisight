@@ -1,0 +1,64 @@
+{
+  "name": "navai-omnisight-desktop",
+  "version": "1.0.0",
+  "description": "OmniSight desktop app",
+  "author": "Your Name",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "build:frontend": "cd frontend && npm ci && npm run build",
+    "build:backend": "cd backend && pip install -r requirements.txt && pyinstaller --onefile --clean --distpath ../dist-backend app.py --name backend_server --add-data \"models;models\"",
+    "build": "npm run build:frontend && npm run build:backend",
+    "package": "electron-builder --win zip",
+    "dev": "concurrently \"npm:watch-frontend\" \"npm:dev-electron\"",
+    "watch-frontend": "cd frontend && vite",
+    "dev-electron": "cross-env NODE_ENV=development electron ."
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^25.9.8",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.laxnar.omnisight",
+    "productName": "navai-omnisight-desktop",
+    "directories": {
+      "output": "release"
+    },
+    "asar": true,
+    "asarUnpack": [
+      "backend/**"
+    ],
+    "files": [
+      "frontend/dist/**",
+      "electron/**"
+    ],
+    "extraResources": [
+      {
+        "from": "dist-backend/",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "icon": "electron/assets/icon.ico",
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  }
+}
