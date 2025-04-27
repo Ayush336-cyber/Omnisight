@@ -1,0 +1,15 @@
+{
+  "name": "navai-omnisight-electron",
+  "version": "1.0.0",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"npm:dev:ui\" \"npm:dev:backend\" \"wait-on http://127.0.0.1:5173 && electron .\""
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "concurrently": "^8.0.0",
+    "wait-on": "^8.0.3"
+  }
+}
