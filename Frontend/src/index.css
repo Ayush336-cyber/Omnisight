@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Neon glow effect utility */
+@layer utilities {
+  .neon {
+    text-shadow: 0 0 6px rgba(20,184,166,0.7), 0 0 20px rgba(20,184,166,0.4);
+  }
+}
