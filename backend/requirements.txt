@@ -1,0 +1,25 @@
+# FastAPI & server
+fastapi>=0.95.2
+uvicorn[standard]>=0.23.1
+python-multipart>=0.0.6
+
+# YOLOv5 dependencies
+torch>=1.7.0
+torchvision>=0.8.1
+thop>=0.1.1
+
+# Computer-vision core
+numpy>=1.18.5
+opencv-python>=4.1.2
+Pillow>=7.1.2
+
+# Data science / plotting (optional but used by YOLOv5 for metrics)
+pandas>=1.1.4
+matplotlib>=3.2.2
+seaborn>=0.11.1
+psutil>=5.7.0
+scipy>=1.4.1
+tqdm>=4.41.0
+
+# YAML config parsing (used by YOLOv5)
+PyYAML>=5.3.1
